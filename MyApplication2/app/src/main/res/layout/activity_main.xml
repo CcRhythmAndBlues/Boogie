@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="com.example.administrator.myapplication2.MainActivity">
+
+
+    <!--<TextView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:text="Hello World!"-->
+            <!--tools:layout_editor_absoluteY="182dp" tools:layout_editor_absoluteX="80dp"/>-->
+    <TextView
+            android:id="@+id/tv_path"
+            android:layout_width="385dp"
+            android:layout_height="0dp"
+            android:layout_alignParentTop="true"
+            android:text=""
+            android:textSize="15sp"
+            tools:layout_constraintTop_creator="1" tools:layout_constraintBottom_creator="1"
+            app:layout_constraintBottom_toTopOf="@+id/tv_bizhishu" android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp" tools:layout_constraintLeft_creator="1" android:layout_marginBottom="9dp"
+            app:layout_constraintLeft_toLeftOf="parent" app:layout_constraintTop_toTopOf="parent"/>
+    <TextView
+            android:id="@+id/tv_bizhishu"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_alignParentTop="true"
+            android:textSize="27sp"
+            android:text="当前壁纸数:" app:layout_constraintRight_toLeftOf="@+id/btn_mode"
+            tools:layout_constraintRight_creator="1" app:layout_constraintBaseline_toBaselineOf="@+id/tv_num"
+            tools:layout_constraintBaseline_creator="1" tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_path" app:layout_constraintHorizontal_bias="1.0"/>
+    <TextView
+            android:id="@+id/tv_num"
+            android:gravity="center"
+            android:layout_width="117dp"
+            android:layout_height="48dp"
+            android:textStyle="bold"
+            android:layout_alignParentTop="true"
+            android:textSize="27sp"
+            android:text="0" app:layout_constraintLeft_toRightOf="@+id/tv_bizhishu"
+            tools:layout_constraintBottom_creator="1"
+            android:layout_marginBottom="12dp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_mode"/>
+    <Button
+            android:id="@+id/btn_setWallpaper"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:text="一键更换"
+            android:textSize="20sp"
+            android:textColor="#0066ff" tools:layout_constraintBottom_creator="1"
+            tools:layout_constraintTop_creator="1" tools:layout_constraintRight_creator="1"
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintRight_toRightOf="@+id/btn_del"
+            android:layout_marginTop="13dp" app:layout_constraintTop_toBottomOf="@+id/btn_addtoDrawable"
+            tools:layout_constraintLeft_creator="1" android:layout_marginBottom="28dp"
+            app:layout_constraintLeft_toLeftOf="@+id/btn_addtoDrawable"/>
+    <Button
+            android:id="@+id/btn_addtoDrawable"
+            android:layout_width="109dp"
+            android:layout_height="48dp"
+            android:text="添加"
+            android:textSize="20sp"
+            android:textColor="#0066ff" android:layout_marginStart="64dp"
+            tools:layout_constraintBottom_creator="1" app:layout_constraintBottom_toBottomOf="parent"
+            tools:layout_constraintLeft_creator="1" android:layout_marginBottom="97dp"
+            app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <Button
+            android:id="@+id/btn_del"
+            android:layout_width="109dp"
+            android:layout_height="48dp"
+            android:text="删除"
+            android:textSize="20sp"
+            android:textColor="#0066ff" android:layout_marginStart="24dp"
+            tools:layout_constraintBottom_creator="1" app:layout_constraintBottom_toTopOf="@+id/btn_setWallpaper"
+            tools:layout_constraintLeft_creator="1" android:layout_marginBottom="13dp"
+            app:layout_constraintLeft_toRightOf="@+id/btn_addtoDrawable"/>
+
+
+
+
+
+
+    <TextView
+            android:id="@+id/tv_mode"
+            android:gravity="center_vertical|left"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="当前更换模式" tools:layout_constraintTop_creator="1" tools:layout_constraintRight_creator="1"
+            tools:layout_constraintBottom_creator="1" app:layout_constraintBottom_toBottomOf="@+id/btn_mode"
+            app:layout_constraintRight_toRightOf="@+id/tv_auto" tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="@+id/tv_bizhishu" app:layout_constraintTop_toTopOf="@+id/btn_mode"/>
+    <Button
+            android:id="@+id/btn_mode"
+            android:layout_width="109dp"
+            android:layout_height="48dp"
+            android:text="随机"
+            android:enabled="false"
+            android:textSize="20sp"
+            android:textColor="#ffffff" tools:layout_constraintTop_creator="1" tools:layout_constraintRight_creator="1"
+            android:layout_marginEnd="98dp" app:layout_constraintRight_toRightOf="parent"
+            android:layout_marginTop="107dp" app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/tv_auto"
+            android:gravity="center_vertical|left"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="自动更换："
+            app:layout_constraintRight_toLeftOf="@+id/btn_auto"
+            tools:layout_constraintRight_creator="1" android:layout_marginStart="16dp" android:layout_marginEnd="22dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btn_auto" tools:layout_constraintBaseline_creator="1"
+            tools:layout_constraintLeft_creator="1" app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <Button
+            android:id="@+id/btn_auto"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text=""
+            android:textSize="20sp"
+            android:textColor="#0066ff" tools:layout_constraintTop_creator="1" tools:layout_constraintRight_creator="1"
+            app:layout_constraintRight_toRightOf="@+id/btn_mode" android:layout_marginTop="20dp"
+            app:layout_constraintTop_toBottomOf="@+id/btn_mode" tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="@+id/btn_mode"/>
+
+    <TextView
+            android:id="@+id/tv_changeTime"
+            android:gravity="center_vertical|left"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:text="自动更换间隔:" app:layout_constraintRight_toLeftOf="@+id/btn_changeTime"
+            tools:layout_constraintRight_creator="1" android:layout_marginStart="16dp" android:layout_marginEnd="12dp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/btn_changeTime" tools:layout_constraintBaseline_creator="1"
+            tools:layout_constraintLeft_creator="1" app:layout_constraintLeft_toLeftOf="parent"/>
+
+    <Button
+            android:id="@+id/btn_changeTime"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:text="24小时"
+            android:enabled="false"
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            tools:layout_constraintTop_creator="1" tools:layout_constraintRight_creator="1"
+            app:layout_constraintRight_toRightOf="@+id/btn_auto" android:layout_marginTop="22dp"
+            app:layout_constraintTop_toBottomOf="@+id/btn_auto" tools:layout_constraintLeft_creator="1"
+            app:layout_constraintLeft_toLeftOf="@+id/btn_auto"/>
+
+
+</android.support.constraint.ConstraintLayout>
