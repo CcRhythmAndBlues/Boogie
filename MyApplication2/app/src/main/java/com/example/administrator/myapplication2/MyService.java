@@ -20,7 +20,7 @@ import java.util.Random;
 public class MyService extends Service {
     private String folderpath = null;
 
-    private int changeTime =1000*60*60*24;
+    private int changeTime =1000*60*60*12;
 //    private int changeTime =1000*5;
 
     @Override
@@ -61,33 +61,35 @@ public class MyService extends Service {
         Intent intent2 = new Intent(this, MyAutoBroadUpdateReceiver.class);
         PendingIntent pi = PendingIntent.getBroadcast(this, 0, intent2, 0);
             manager.set(AlarmManager.ELAPSED_REALTIME_WAKEUP, triggerAtTime, pi);
+            if(!intent.getBooleanExtra("isfirst",false)){
+                //如果是第一次,就获取到true，！一下变成false,就不执行更换操作
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Looper.prepare();
+                        Toast.makeText(getApplicationContext(), "执行了更换操作", Toast.LENGTH_SHORT).show();
+        //                这是定时所执行的任务
+                            File folder = new File(folderpath);
+                            if (!folder.exists() || folder.listFiles() == null){
+                                Toast.makeText(getApplicationContext(), "更换壁纸出错", Toast.LENGTH_SHORT).show();
+                                return;
+                            }
+                        try {
+                            WallpaperManager myWallManager = WallpaperManager.getInstance(getApplicationContext());
+                            File[] files = new File(folderpath).listFiles();
+                            int imgnumber = files.length;
+                            String randomImg = files[new Random().nextInt(imgnumber)].getName();
 
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Looper.prepare();
-                    Toast.makeText(getApplicationContext(), "执行了更换操作", Toast.LENGTH_SHORT).show();
-    //                这是定时所执行的任务
-                        File folder = new File(folderpath);
-                        if (!folder.exists() || folder.listFiles() == null){
-                            Toast.makeText(getApplicationContext(), "更换壁纸出错", Toast.LENGTH_SHORT).show();
-                            return;
+                            Bitmap bitmap= BitmapFactory.decodeFile(folderpath+"/"+randomImg);
+                            myWallManager.setBitmap(bitmap);
+                        } catch (Exception e) {
+                            Log.d("日志","捕获异常:"+e);
+                            e.printStackTrace();
                         }
-                    try {
-                        WallpaperManager myWallManager = WallpaperManager.getInstance(getApplicationContext());
-                        File[] files = new File(folderpath).listFiles();
-                        int imgnumber = files.length;
-                        String randomImg = files[new Random().nextInt(imgnumber)].getName();
-
-                        Bitmap bitmap= BitmapFactory.decodeFile(folderpath+"/"+randomImg);
-                        myWallManager.setBitmap(bitmap);
-                    } catch (Exception e) {
-                        Log.d("日志","捕获异常:"+e);
-                        e.printStackTrace();
+                        Looper.loop();
                     }
-                    Looper.loop();
-                }
-            }).start();
+                }).start();
+            }
         return super.onStartCommand(intent, flags, startId);
     }
 //    @RequiresApi(api = Build.VERSION_CODES.O)

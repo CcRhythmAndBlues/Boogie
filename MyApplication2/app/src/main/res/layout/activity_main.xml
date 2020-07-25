@@ -147,7 +147,7 @@
             android:id="@+id/btn_changeTime"
             android:layout_width="0dp"
             android:layout_height="48dp"
-            android:text="24小时"
+            android:text="12小时"
             android:enabled="false"
             android:textSize="20sp"
             android:textColor="#ffffff"

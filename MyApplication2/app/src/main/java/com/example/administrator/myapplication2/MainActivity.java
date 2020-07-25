@@ -289,7 +289,9 @@ public class MainActivity extends AppCompatActivity {
 //            Intent i = new Intent(MainActivity.this,MainActivity.MyService.class);
 //            i.setAction("android.intent.action.RESPOND_VIA_MESSAGE");
 //            intent.putExtra("changeTime",anHour);
+
             if(!isAuto){
+               intent.putExtra("isfirst",true);
                 //如果当前未开启,设为开启
                 isAuto=true;
                 intent.putExtra("status",isAuto);
